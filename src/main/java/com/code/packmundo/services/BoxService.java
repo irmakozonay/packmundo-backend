@@ -31,6 +31,14 @@ public class BoxService {
         this.userBoxRepository = userBoxRepository;
     }
 
+    public Iterable<UserBox> getUserBoxes(){
+        Iterable<UserBox> userBoxes = userBoxRepository.findByUserId(1); //todo userId
+        for (UserBox userBox : userBoxes) {
+            userBox.setBox(boxRepository.findById(userBox.getBoxId()).get());
+        }
+        return userBoxes;
+    }
+
     public Box saveBox(Box box) {
         boolean isNewBox = box.getUuid() == null;
         if (isNewBox) {

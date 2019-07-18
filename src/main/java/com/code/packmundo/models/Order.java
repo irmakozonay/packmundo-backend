@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -42,6 +43,9 @@ public class Order {
     private String status;
     private LocalDateTime intime;
     private UUID uuid;
+
+    @Transient
+    private Box box;
 
     public int getId() {
         return id;
@@ -89,6 +93,14 @@ public class Order {
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
     }
 
 }

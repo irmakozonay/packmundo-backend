@@ -1,6 +1,7 @@
 package com.code.packmundo.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -28,6 +30,9 @@ public class Quote {
     private LocalDateTime intime;
     private UUID uuid;
 
+    @Transient
+    private List<DeliveryQuote> deliveryQuotes;
+
     public int getId() {
         return id;
     }
@@ -36,8 +41,16 @@ public class Quote {
         return companyId;
     }
 
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
     public int getOrderId() {
         return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public float getPrice() {
@@ -62,6 +75,10 @@ public class Quote {
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public List<DeliveryQuote> getDeliveryQuotes() {
+        return deliveryQuotes;
     }
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -25,7 +26,13 @@ public class UserBox {
     private int boxId;
     private LocalDateTime intime;
     private UUID uuid;
-    
+
+    @Transient
+    private Box box;
+
+    public UserBox() {
+    }
+
     public UserBox(int userId, int boxId) {
         this.userId = userId;
         this.boxId = boxId;
@@ -59,6 +66,14 @@ public class UserBox {
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
     }
 
 }

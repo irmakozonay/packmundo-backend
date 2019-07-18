@@ -1,6 +1,6 @@
 package com.code.packmundo.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -22,12 +22,12 @@ public class DeliveryQuote {
     @JsonIgnore
     private int id;
     private String speed;
-    private LocalDateTime date1;
-    private LocalDateTime date2;
+    private LocalDate date1;
+    private LocalDate date2;
     private float price;
     private String currency;
     private int deliveryCompanyId;
-    private int quotesId;
+    private int quoteId;
     private UUID uuid;
 
     public int getId() {
@@ -38,11 +38,11 @@ public class DeliveryQuote {
         return speed;
     }
 
-    public LocalDateTime getDate1() {
+    public LocalDate getDate1() {
         return date1;
     }
 
-    public LocalDateTime getDate2() {
+    public LocalDate getDate2() {
         return date2;
     }
 
@@ -58,8 +58,12 @@ public class DeliveryQuote {
         return deliveryCompanyId;
     }
 
-    public int getQuotesId() {
-        return quotesId;
+    public int getQuoteId() {
+        return quoteId;
+    }
+
+    public void setQuoteId(int quoteId) {
+        this.quoteId = quoteId;
     }
 
     public UUID getUuid() {
@@ -69,5 +73,6 @@ public class DeliveryQuote {
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
+
 
 }
