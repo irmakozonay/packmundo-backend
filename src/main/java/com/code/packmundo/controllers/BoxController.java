@@ -1,5 +1,7 @@
 package com.code.packmundo.controllers;
 
+import java.util.HashMap;
+
 import com.code.packmundo.models.Box;
 import com.code.packmundo.models.BoxType;
 import com.code.packmundo.services.BoxService;
@@ -32,14 +34,21 @@ public class BoxController {
         return boxService.getSubBoxTypes(mainTypeId);
     }
 
-    @RequestMapping(value = "all")
-    public Iterable<Box> getBoxes() {
-        return boxService.getBoxes();
-    }
-
     @PostMapping(value = "save")
     public Box saveBox(@RequestBody Box box) {
         return boxService.saveBox(box);
+    }
+
+    @RequestMapping(value = "typefields")
+    public HashMap<String, Object> getBoxTypeFields(@RequestParam(value = "typeid") int typeid) {
+        return boxService.getBoxTypeFields(typeid);
+    }
+
+    //test
+
+    @RequestMapping(value = "all")
+    public Iterable<Box> getBoxes() {
+        return boxService.getBoxes();
     }
 
 }

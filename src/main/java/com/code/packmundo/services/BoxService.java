@@ -1,12 +1,16 @@
 package com.code.packmundo.services;
 
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.UUID;
 
 import com.code.packmundo.models.Box;
 import com.code.packmundo.models.BoxType;
 import com.code.packmundo.models.repositories.BoxRepository;
 import com.code.packmundo.models.repositories.BoxTypeRepository;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +47,11 @@ public class BoxService {
         }
         box.setUpdateTime(LocalDateTime.now());
         return boxRepository.save(box);
+    }
+
+    public HashMap<String, Object> getBoxTypeFields(int typeid) {
+        Type mapType = new TypeToken<HashMap<String, Object>>(){}.getType();
+        return new Gson().fromJson(boxTypeRepository.getFieldsById(typeid), mapType);
     }
 
 }
