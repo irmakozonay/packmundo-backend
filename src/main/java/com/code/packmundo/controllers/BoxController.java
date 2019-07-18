@@ -24,22 +24,24 @@ public class BoxController {
         this.boxService = boxService;
     }
 
-    @RequestMapping(value = "maintypes")
-    public Iterable<BoxType> getMainBoxTypes() {
-        return boxService.getMainBoxTypes();
-    }
-
-    @RequestMapping(value = "subtypes")
-    public Iterable<BoxType> getSubBoxTypes(@RequestParam(value = "maintypeid") int mainTypeId) {
-        return boxService.getSubBoxTypes(mainTypeId);
-    }
-
     @PostMapping(value = "save")
     public Box saveBox(@RequestBody Box box) {
         return boxService.saveBox(box);
     }
 
-    @RequestMapping(value = "typefields")
+    //boxtype
+
+    @RequestMapping(value = "type/mains")
+    public Iterable<BoxType> getMainBoxTypes() {
+        return boxService.getMainBoxTypes();
+    }
+
+    @RequestMapping(value = "type/subs")
+    public Iterable<BoxType> getSubBoxTypes(@RequestParam(value = "maintypeid") int mainTypeId) {
+        return boxService.getSubBoxTypes(mainTypeId);
+    }
+
+    @RequestMapping(value = "type/fields")
     public HashMap<String, Object> getBoxTypeFields(@RequestParam(value = "typeid") int typeid) {
         return boxService.getBoxTypeFields(typeid);
     }

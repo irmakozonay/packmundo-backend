@@ -25,6 +25,13 @@ public class UserBox {
     private int boxId;
     private LocalDateTime intime;
     private UUID uuid;
+    
+    public UserBox(int userId, int boxId) {
+        this.userId = userId;
+        this.boxId = boxId;
+        intime = LocalDateTime.now();
+        uuid = UUID.randomUUID();
+    }
 
     public int getId() {
         return id;

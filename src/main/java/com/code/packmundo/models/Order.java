@@ -17,6 +17,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order {
 
+    public enum Status {
+        WAITING("WAITING"), QUOTES_REQADY("QUOTES_REQADY"), ACCEPTED("ACCEPTED");
+
+        private String text;
+ 
+        Status(String text) {
+            this.text = text;
+        }
+    
+        public String toString() {
+            return text;
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
@@ -41,6 +55,10 @@ public class Order {
         return userId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -51,6 +69,10 @@ public class Order {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public LocalDateTime getIntime() {
@@ -68,7 +90,5 @@ public class Order {
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
-
-    
 
 }
