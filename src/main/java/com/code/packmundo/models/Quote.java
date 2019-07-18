@@ -1,7 +1,6 @@
 package com.code.packmundo.models;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -23,7 +22,9 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
+    @JsonIgnore
     private int companyId;
+    @JsonIgnore
     private int orderId;
     private float price;
     private String currency;
@@ -31,7 +32,9 @@ public class Quote {
     private UUID uuid;
 
     @Transient
-    private List<DeliveryQuote> deliveryQuotes;
+    private Iterable<DeliveryQuote> deliveryQuotes;
+    @Transient
+    private Company company;
 
     public int getId() {
         return id;
@@ -77,8 +80,20 @@ public class Quote {
         this.uuid = uuid;
     }
 
-    public List<DeliveryQuote> getDeliveryQuotes() {
+    public Iterable<DeliveryQuote> getDeliveryQuotes() {
         return deliveryQuotes;
+    }
+
+    public void setDeliveryQuotes(Iterable<DeliveryQuote> deliveryQuotes) {
+        this.deliveryQuotes = deliveryQuotes;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
 }

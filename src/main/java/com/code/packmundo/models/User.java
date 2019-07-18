@@ -25,11 +25,15 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private LocalDateTime updateTime;
+    private LocalDateTime intime;
     private UUID uuid;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -48,12 +52,12 @@ public class User {
         return lastName;
     }
 
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
+    public LocalDateTime getIntime() {
+        return intime;
     }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
+    public void setIntime(LocalDateTime intime) {
+        this.intime = intime;
     }
 
     public UUID getUuid() {

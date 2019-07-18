@@ -46,11 +46,4 @@ public class BoxController {
         return boxService.getBoxTypeFields(typeid);
     }
 
-    //test
-
-    @RequestMapping(value = "all")
-    public Iterable<Box> getBoxes() {
-        return boxService.getBoxes();
-    }
-
 }

@@ -70,10 +70,4 @@ public class BoxService {
         return new Gson().fromJson(boxTypeRepository.getFieldsById(typeid), mapType);
     }
 
-    //test
-
-    public Iterable<Box> getBoxes() {
-        return boxRepository.findAll();
-    }
-
 }

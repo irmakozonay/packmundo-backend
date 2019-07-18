@@ -14,7 +14,14 @@ public class UserAddress {
     @JsonIgnore
     private int addressId;
     private int userId;
-	private String type;
+
+    public UserAddress() {
+    }
+    
+    public UserAddress(int addressId, int userId) {
+        this.addressId = addressId;
+        this.userId = userId;
+    }
 
     public int getAddressId() {
         return addressId;
@@ -22,10 +29,6 @@ public class UserAddress {
 
     public int getUserId() {
         return userId;
-    }
-
-    public String getType() {
-        return type;
     }
 
 }

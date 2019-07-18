@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Order {
 
     public enum Status {
-        WAITING("WAITING"), QUOTES_REQADY("QUOTES_REQADY"), ACCEPTED("ACCEPTED");
+        WAITING("WAITING"), QUOTES_READY("QUOTES_READY"), ACCEPTED("ACCEPTED");
 
         private String text;
  
@@ -36,9 +36,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
+    @JsonIgnore
     private int boxId;
+    @JsonIgnore
     private int userId;
     private int quantity;
+    @JsonIgnore
     private int addressId;
     private String status;
     private LocalDateTime intime;
@@ -46,6 +49,10 @@ public class Order {
 
     @Transient
     private Box box;
+    @Transient
+    private User user;
+    @Transient
+    private Address address;
 
     public int getId() {
         return id;
@@ -101,6 +108,22 @@ public class Order {
 
     public void setBox(Box box) {
         this.box = box;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }

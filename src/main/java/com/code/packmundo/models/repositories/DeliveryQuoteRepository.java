@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface DeliveryQuoteRepository extends CrudRepository<DeliveryQuote, Integer> {
     @Query(value = "SELECT id FROM packmundo.delivery_quotes WHERE uuid = ?1", nativeQuery = true)
     int getIdByUuid(UUID uuid);
+    Iterable<DeliveryQuote> findByQuoteId(int quoteId);
 }

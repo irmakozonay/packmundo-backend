@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,9 +27,14 @@ public class DeliveryQuote {
     private LocalDate date2;
     private float price;
     private String currency;
+    @JsonIgnore
     private int deliveryCompanyId;
+    @JsonIgnore
     private int quoteId;
     private UUID uuid;
+
+    @Transient
+    private DeliveryCompany deliveryCompany;
 
     public int getId() {
         return id;
@@ -58,6 +64,10 @@ public class DeliveryQuote {
         return deliveryCompanyId;
     }
 
+    public void setDeliveryCompanyId(int deliveryCompanyId) {
+        this.deliveryCompanyId = deliveryCompanyId;
+    }
+    
     public int getQuoteId() {
         return quoteId;
     }
@@ -74,5 +84,12 @@ public class DeliveryQuote {
         this.uuid = uuid;
     }
 
+    public DeliveryCompany getDeliveryCompany() {
+        return deliveryCompany;
+    }
+
+    public void setDeliveryCompany(DeliveryCompany deliveryCompany) {
+        this.deliveryCompany = deliveryCompany;
+    }
 
 }

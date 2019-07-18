@@ -29,11 +29,23 @@ public class OrderController {
         return orderService.createOrder(order);
     }
 
+    @RequestMapping(value = "quotes")
+    public Iterable<Quote> getQuotes(@RequestParam(value = "orderid") UUID orderUuidId) {
+        return orderService.getQuotes(orderUuidId);
+    }
+
+    //admin
+
+    @RequestMapping(value = "all")
+    public Iterable<Order> getOrders() {
+        return orderService.getOrders();
+    }
+
     //qoute
 
     @PostMapping(value = "/quote/add")
-    public void addQuotes(@RequestParam(value = "orderid") UUID orderUuidId, @RequestBody Iterable<Quote> quotes) {
-        orderService.addQuotes(orderUuidId, quotes);
+    public void addQuotes(@RequestParam(value = "orderid") UUID orderUuid, @RequestBody Iterable<Quote> quotes) {
+        orderService.addQuotes(orderUuid, quotes);
     }
 
 }
