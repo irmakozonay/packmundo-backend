@@ -55,6 +55,10 @@ public class BoxService {
         return box;
     }
 
+    public Box getBox(int boxId) {
+        return boxRepository.findById(boxId).get();
+    }
+
     //type
 
     public Iterable<BoxType> getMainBoxTypes() {

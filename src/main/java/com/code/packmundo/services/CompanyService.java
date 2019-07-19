@@ -35,4 +35,20 @@ public class CompanyService {
         return deliveryCompanyRepository.save(deliveryCompany);
     }
 
+    public Company getCompany(int companyId){
+        return companyRepository.findById(companyId).get();
+    }
+
+    public DeliveryCompany getDeliveryCompany(int deliveryCompanyId){
+        return deliveryCompanyRepository.findById(deliveryCompanyId).get();
+    }
+
+    public int getCompanyIdByUuid(UUID companyUuid){
+        return companyRepository.getIdByUuid(companyUuid);
+    }
+
+    public int getDeliveryCompanyIdByUuid(UUID deliveryCompanyUuid){
+        return deliveryCompanyRepository.getIdByUuid(deliveryCompanyUuid);
+    }
+
 }

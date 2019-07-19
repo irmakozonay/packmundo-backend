@@ -39,6 +39,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User getUser(int userId) {
+        return userRepository.findById(userId).get();
+    }
+
     //address
 
     public Address addAddress(Address address) {
@@ -57,6 +61,10 @@ public class UserService {
             addresses.add(addressRepository.findById(userAddress.getAddressId()).get());
         }
         return addresses;
+    }
+
+    public Address getAddress(int addressId) {
+        return addressRepository.findById(addressId).get();
     }
 
 }
