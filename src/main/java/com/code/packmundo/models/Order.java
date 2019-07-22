@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Order {
 
     public enum Status {
-        WAITING("WAITING"), QUOTES_READY("QUOTES_READY"), ACCEPTED("ACCEPTED");
+        WAITING("WAITING"), QUOTES_READY("QUOTES_READY"), PAYMENT_RECEIVED("PAYMENT_RECEIVED");
 
         private String text;
  

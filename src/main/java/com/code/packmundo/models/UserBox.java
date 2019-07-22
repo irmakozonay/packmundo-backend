@@ -22,6 +22,7 @@ public class UserBox {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
+    private String name;
     private int userId;
     private int boxId;
     private LocalDateTime intime;
@@ -42,6 +43,10 @@ public class UserBox {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getUserId() {
