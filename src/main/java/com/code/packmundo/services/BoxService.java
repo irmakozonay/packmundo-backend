@@ -7,10 +7,8 @@ import java.util.UUID;
 
 import com.code.packmundo.models.Box;
 import com.code.packmundo.models.BoxType;
-import com.code.packmundo.models.UserBox;
 import com.code.packmundo.models.repositories.BoxRepository;
 import com.code.packmundo.models.repositories.BoxTypeRepository;
-import com.code.packmundo.models.repositories.UserBoxRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -22,21 +20,15 @@ public class BoxService {
 
     private final BoxTypeRepository boxTypeRepository;
     private final BoxRepository boxRepository;
-    private final UserBoxRepository userBoxRepository;
 
     @Autowired
-    public BoxService(BoxTypeRepository boxTypeRepository, BoxRepository boxRepository, UserBoxRepository userBoxRepository) {
+    public BoxService(BoxTypeRepository boxTypeRepository, BoxRepository boxRepository) {
         this.boxTypeRepository = boxTypeRepository;
         this.boxRepository = boxRepository;
-        this.userBoxRepository = userBoxRepository;
     }
 
-    public Iterable<UserBox> getUserBoxes(){
-        Iterable<UserBox> userBoxes = userBoxRepository.findByUserId(1); //todo userId
-        for (UserBox userBox : userBoxes) {
-            userBox.setBox(boxRepository.findById(userBox.getBoxId()).get());
-        }
-        return userBoxes;
+    public Iterable<Box> getUserBoxes(){
+        return boxRepository.findByUserId(1); //todo userId
     }
 
     public Box saveBox(Box box) {
@@ -46,17 +38,18 @@ public class BoxService {
         } else {
             box.setId(boxRepository.getIdByUuid(box.getUuid()));
         }
+        box.setUserId(1); //todo userid
         box.setUpdateTime(LocalDateTime.now());
         box = boxRepository.save(box);
-        if (isNewBox) {
-            UserBox userBox = new UserBox(1, box.getId()); //todo userid
-            userBoxRepository.save(userBox);
-        }
         return box;
     }
 
     public Box getBox(int boxId) {
         return boxRepository.findById(boxId).get();
+    }
+
+    public int getIdByUuid(UUID uuid) {
+        return boxRepository.getIdByUuid(uuid);
     }
 
     //type

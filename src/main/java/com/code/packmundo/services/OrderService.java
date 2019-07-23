@@ -36,11 +36,11 @@ public class OrderService {
     }
 
     public Order createOrder(Order order) {
+        order.setBoxId(boxService.getIdByUuid(order.getBox().getUuid()));
         order.setUuid(UUID.randomUUID());
         order.setIntime(LocalDateTime.now());
-        order.setUserId(1); // todo userId
-        //todo addressId
-        order.setStatus(Order.Status.WAITING.toString());
+        //todo addressId, userId
+        order.setStatus(Order.Status.WAITING_QUOTES.toString());
         return orderRepository.save(order);
     }
 

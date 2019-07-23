@@ -1,6 +1,5 @@
 package com.code.packmundo.models;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -22,9 +21,7 @@ public class DeliveryQuote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
-    private String speed;
-    private LocalDate date1;
-    private LocalDate date2;
+    private int days;
     private float price;
     private String currency;
     @JsonIgnore
@@ -40,18 +37,10 @@ public class DeliveryQuote {
         return id;
     }
 
-    public String getSpeed() {
-        return speed;
+    public int getDays() {
+        return days;
     }
-
-    public LocalDate getDate1() {
-        return date1;
-    }
-
-    public LocalDate getDate2() {
-        return date2;
-    }
-
+    
     public float getPrice() {
         return price;
     }

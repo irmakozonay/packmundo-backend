@@ -21,6 +21,9 @@ public class Box {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
+    @JsonIgnore
+    private int userId;
+    private String name;
     private String boxJson;
     private LocalDateTime updateTime;
     private UUID uuid;
@@ -31,7 +34,19 @@ public class Box {
 
     public void setId(int id) {
 		this.id = id;
-	}
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public String getBoxJson() {
         return boxJson;

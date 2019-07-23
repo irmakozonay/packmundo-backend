@@ -23,7 +23,7 @@ public class CompanyService {
         this.deliveryCompanyRepository = deliveryCompanyRepository;
     }
 
-    public Company saveCompany(Company company) { //todo addressId olarak geliyor ama ya address ile gelmeli ya da once address yaratilmali
+    public Company saveCompany(Company company) { //todo addressid ya address gelmeli ya da once address yaratilmali
         company.setUuid(UUID.randomUUID());
         company.setIntime(LocalDateTime.now());
         return companyRepository.save(company);

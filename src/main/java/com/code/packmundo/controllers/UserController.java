@@ -5,7 +5,7 @@ import java.util.List;
 import com.code.packmundo.models.Address;
 import com.code.packmundo.models.Order;
 import com.code.packmundo.models.User;
-import com.code.packmundo.models.UserBox;
+import com.code.packmundo.models.Box;
 import com.code.packmundo.services.BoxService;
 import com.code.packmundo.services.OrderService;
 import com.code.packmundo.services.UserService;
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "boxes")
-    public Iterable<UserBox> getUserBoxes() {
+    public Iterable<Box> getUserBoxes() {
         return boxService.getUserBoxes();
     }
 

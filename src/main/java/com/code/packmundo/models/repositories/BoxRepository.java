@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface BoxRepository extends CrudRepository<Box, Integer> {
     @Query(value = "SELECT id FROM packmundo.boxes WHERE uuid = ?1", nativeQuery = true)
     int getIdByUuid(UUID uuid);
+    Iterable<Box> findByUserId(int userId);
 }
