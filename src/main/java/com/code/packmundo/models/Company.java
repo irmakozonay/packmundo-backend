@@ -24,6 +24,7 @@ public class Company {
     private String name;
     @JsonIgnore
     private int addressId;
+    @JsonIgnore
     private LocalDateTime intime;
     private UUID uuid;
 

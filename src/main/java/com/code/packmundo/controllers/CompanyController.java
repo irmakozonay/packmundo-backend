@@ -28,6 +28,11 @@ public class CompanyController {
         return companyService.saveCompany(company);
     }
 
+    @RequestMapping(value = "all")
+    public Iterable<Company> getCompanies() {
+        return companyService.getCompanies();
+    }
+
     @PostMapping(value = "delivery/save")
     public DeliveryCompany saveDeliveryCompany(@RequestBody DeliveryCompany deliveryCompany) {
         return companyService.saveDeliveryCompany(deliveryCompany);

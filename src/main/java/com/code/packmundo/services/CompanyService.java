@@ -39,6 +39,10 @@ public class CompanyService {
         return companyRepository.findById(companyId).get();
     }
 
+    public Iterable<Company> getCompanies(){
+        return companyRepository.findAll();
+    }
+
     public DeliveryCompany getDeliveryCompany(int deliveryCompanyId){
         return deliveryCompanyRepository.findById(deliveryCompanyId).get();
     }

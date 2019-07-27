@@ -31,7 +31,9 @@ public class QuoteService {
             quote.setCompany(companyService.getCompany(quote.getCompanyId()));
             Iterable<DeliveryQuote> deliveryQuotes = deliveryQuoteRepository.findByQuoteId(quote.getId());
             for (DeliveryQuote deliveryQuote : deliveryQuotes) {
-                deliveryQuote.setDeliveryCompany(companyService.getDeliveryCompany(deliveryQuote.getDeliveryCompanyId()));
+                if (deliveryQuote.getDeliveryCompanyId() != null) {
+                    deliveryQuote.setDeliveryCompany(companyService.getDeliveryCompany(deliveryQuote.getDeliveryCompanyId()));
+                }
             }
             quote.setDeliveryQuotes(deliveryQuotes);
         }
@@ -47,8 +49,10 @@ public class QuoteService {
             quote.setIntime(LocalDateTime.now());
             Quote resultQuote = quoteRepository.save(quote);
             for (DeliveryQuote deliveryQuote : quote.getDeliveryQuotes()) {
-                int deliveryCompanyId = companyService.getDeliveryCompanyIdByUuid(deliveryQuote.getDeliveryCompany().getUuid());
-                deliveryQuote.setDeliveryCompanyId(deliveryCompanyId);
+                if (deliveryQuote.getDeliveryCompany() != null) {
+                    int deliveryCompanyId = companyService.getDeliveryCompanyIdByUuid(deliveryQuote.getDeliveryCompany().getUuid());
+                    deliveryQuote.setDeliveryCompanyId(deliveryCompanyId);
+                }
                 deliveryQuote.setQuoteId(resultQuote.getId());
                 deliveryQuote.setUuid(UUID.randomUUID());
                 deliveryQuoteRepository.save(deliveryQuote);

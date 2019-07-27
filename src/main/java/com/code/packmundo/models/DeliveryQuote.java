@@ -25,7 +25,7 @@ public class DeliveryQuote {
     private float price;
     private String currency;
     @JsonIgnore
-    private int deliveryCompanyId;
+    private Integer deliveryCompanyId;
     @JsonIgnore
     private int quoteId;
     private UUID uuid;
@@ -49,11 +49,11 @@ public class DeliveryQuote {
         return currency;
     }
 
-    public int getDeliveryCompanyId() {
+    public Integer getDeliveryCompanyId() {
         return deliveryCompanyId;
     }
 
-    public void setDeliveryCompanyId(int deliveryCompanyId) {
+    public void setDeliveryCompanyId(Integer deliveryCompanyId) {
         this.deliveryCompanyId = deliveryCompanyId;
     }
     
